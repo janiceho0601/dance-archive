@@ -1,5 +1,7 @@
 # dance-archive
 
+![Preview of website](preview.png)
+
 Consists of two parts: an Instagram scraper and a Django based website. The data collected via the scraper was used to populate the website's database. The website itself features a search function that allows visitors to search and filter through the posts stored. Only posts with consent within their description will be shown on the website. 
 
 ## Requirements
