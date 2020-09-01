@@ -1,0 +1,45 @@
+{% extends 'search/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block content %} 
+
+	<div class="text-center">Search</div>
+		<div class="container-fluid py-3">
+			<form method="get" class = "p-3 my-3 border">
+				{{ my_filter.form|crispy}}
+
+				<button class="btn btn-secondary btn-sm my-3" type="Submit">
+					&#128270 Search
+				</button>
+
+				<a href = "{% url 'index' %}">
+					<p style="color:white;"> Reset </p>
+			    </a>
+			</form>
+		</div>
+
+		{% if post_list %}
+			<div class="container-fluid py-3">
+				<div class="row">
+		{% for post in post_list %}			
+					<div class="col-sm-3">
+						<a href = {{ post.url }} target="_blank">
+							<img class="img-fluid" alt ="thumbnail"  src="{% static post.thumbnail %}"></img>
+						</a>
+						<p> @{{ post.user.username }} </p>
+						<p> {{ post.short_caption }} </p>
+						<p> &#127925 {{ post.song }} by {{ post.artist }} </p>
+					</div>
+				
+		{% endfor %}
+				</div>
+			</div>
+		{% else %}
+			<p>No posts are available.</p>
+		{% endif %}
+
+		
+{% endblock %}
